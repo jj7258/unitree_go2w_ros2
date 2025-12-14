@@ -1,0 +1,8 @@
+# Ignore ROS2 workspace artifacts
+build/
+install/
+log/
+
+# Ignore IDE files
+.vscode/
+.github/
