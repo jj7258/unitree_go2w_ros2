@@ -114,5 +114,5 @@ For a technical breakdown of how we ported the description from ROS1, how we map
 ## 📚 References & Acknowledgements
 
 *   **[Unitree Robotics](https://www.unitree.com/)**: For the hardware, SDK2, and base ROS2 packages.
-*   **[Intelligent Robotics Lab (URJC)](https://github.com/IntelligentRoboticsLabs)**: For the original `go2_driver` implementation which served as the foundation for this work.
+*   **[Unitree Go2 Robot ROS2 Driver](https://github.com/Unitree-Go2-Robot/go2_robot)**: For the original `go2_driver` implementation which served as the foundation for this work.
 *   **[unitree_ros](https://github.com/unitreerobotics/unitree_ros)**: Source for the mesh files and URDF structure.
