@@ -1,10 +1,20 @@
-# Switch gait
+# Switch gait for Go2W (wheeled version)
+# Use /mode, /stand_up, /stand_down, /balance_stand services to change robot state first
+# Then use this service to switch between locomotion gaits (0-3)
+#
+# Note: Negative values (-3, -2, -1) are STATUS values reported in /api/sport/response
+#       They are NOT commandable via this service
+#
+# Status values (read-only from /api/sport/response "gait" field):
+#   -3 = Damping mode
+#   -2 = Prone with locked joints  
+#   -1 = Transitioning/Unknown
 
-int32 IDLE = 0
-int32 TROT = 1
-int32 TROT_RUN_NING = 2
-int32 FORWARD_CLIMBING_MODE = 3
-int32 REVERSE_CLIMBING_MODE = 4
+# Commandable gait values (valid for this service):
+int32 MOVE = 0                  # Normal locomotion mode
+int32 TERRAIN = 1               # Terrain mode
+int32 CLIMB = 2                 # Climb mode
+# Note: Handstand uses separate API (1039), use /mode handstand instead
 
 int32 d
 

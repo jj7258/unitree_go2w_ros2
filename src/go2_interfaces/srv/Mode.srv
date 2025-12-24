@@ -36,6 +36,9 @@
 # - GetState
 # - EconomicGait
 # - FingerHeart
+# - Stairs (Go2W terrain gait, requires balance_stand)
+# - Terrain (alias for Stairs)
+# - Climb (Go2W climb gait, requires balance_stand)
 # - Dance3
 # - Dance4
 # - HopSpinLeft

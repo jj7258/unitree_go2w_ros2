@@ -365,6 +365,20 @@ void Go2Driver::handleMode(
   } else if (mode == "finger_heart") {
     response->message = "Change the mode to Finger Heart";
     req.header.identity.api_id = static_cast<int>(go2w_driver::Mode::FingerHeart);
+  } else if (mode == "stairs" || mode == "terrain") {
+    // SwitchGait(1) - Terrain mode (requires balance_stand first)
+    nlohmann::json js;
+    js["data"] = 1;
+    req.parameter = js.dump();
+    response->message = "Switch to Terrain/Stairs mode (gait 1)";
+    req.header.identity.api_id = static_cast<int>(go2w_driver::Mode::SwitchGait);
+  } else if (mode == "climb") {
+    // SwitchGait(2) - Climb mode (requires balance_stand first)
+    nlohmann::json js;
+    js["data"] = 2;
+    req.parameter = js.dump();
+    response->message = "Switch to Climb mode (gait 2)";
+    req.header.identity.api_id = static_cast<int>(go2w_driver::Mode::SwitchGait);
   } else {
     response->success = false;
     response->message = "Invalid mode";
@@ -424,9 +438,10 @@ void Go2Driver::handleSwitchGait(
 {
   (void)request_header;
 
-  if (request->d < 0 || request->d > 4) {
+  // Go2W commandable gait range: 0-2
+  if (request->d < 0 || request->d > 2) {
     response->success = false;
-    response->message = "Invalid gait type [0 - 4]";
+    response->message = "Invalid gait type [0-2]. Use: 0=Move, 1=Terrain, 2=Climb. For state changes use /mode services.";
     return;
   }
 
